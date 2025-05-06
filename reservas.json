@@ -1,0 +1,14 @@
+[
+    {
+        "habitacion_num": 1,
+        "cliente": "Washington",
+        "fecha": "2025-05-05",
+        "hora_inicio": "20:00"
+    },
+    {
+        "habitacion_num": 1,
+        "cliente": "Tatiana",
+        "fecha": "2025-05-05",
+        "hora_inicio": "08:00"
+    }
+]
