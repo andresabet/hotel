@@ -61,7 +61,7 @@ En el contexto actual de la industria hotelera, la gestión eficiente de reserva
 
 ```bash
 # 1. Clona el repositorio
-git clone https://github.com/tu-usuario/hotel-python.git
+git clone https://github.com/andresabet/hotel.git
 cd hotel-python
 
 # 2. (Opcional) Crea y activa un entorno virtual
