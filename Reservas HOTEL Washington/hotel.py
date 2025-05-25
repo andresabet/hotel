@@ -19,8 +19,8 @@ class Hotel:
 
             # Guardar comprobante en archivo txt por cliente
             nombre_archivo = f"comprobante_{reserva.cliente.lower().replace(' ', '_')}.txt"
-            with open(nombre_archivo, "a", encoding="utf-8") as f:
-                f.write(reserva.comprobante + "\n" + "-" * 30 + "\n")
+          with open("reservas.txt", "a", encoding="utf-8") as f:
+              f.write(str(reserva.comprobante) + "\n" + "-" * 30 + "\n")
 
             print("✅ Reserva realizada correctamente.")
             print(reserva.comprobante)
