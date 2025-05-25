@@ -29,9 +29,20 @@ def solicitar_reserva(hotel):
             print("❌ Horario no válido.")
             continue
 
-        reserva = Reserva(habitacion, nombre, fecha, hora)
+        if hora == "08:00":
+            monto = 15.0
+        elif hora == "14:00":
+            monto = 25.0
+        elif hora == "20:00":
+            monto = 50.0
+        else:
+            monto = 0.0
+
+        reserva = Reserva(habitacion, nombre, fecha, hora, monto)
         if hotel.crear_reserva(reserva):
-            break  # exit once created
+            break  # salir si la reserva se crea con éxito
+
+
 
 def consultar_reserva(hotel):
     while True:

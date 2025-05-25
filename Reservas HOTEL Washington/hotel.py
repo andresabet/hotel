@@ -9,17 +9,22 @@ class Hotel:
         self.cargar_reservas()
 
     def crear_reserva(self, reserva):
-        if not reserva.es_valida():
-            print("⛔ Horario inválido.")
-            return False
-        if self.esta_disponible(reserva.habitacion_num, reserva.fecha, reserva.hora_inicio):
-            self.reservas.append(reserva)
-            self.guardar_reservas()
-            print("✅ Reserva realizada correctamente.")
-            return True
-        else:
-            print("⛔ Esa habitación ya está reservada en ese horario.")
-            return False
+            if not reserva.es_valida():
+                print("⛔ Horario inválido.")
+                return False
+            if self.esta_disponible(reserva.habitacion_num, reserva.fecha, reserva.hora_inicio):
+                reserva.generar_comprobante()
+                self.reservas.append(reserva)
+                self.guardar_reservas()
+
+                print("✅ Reserva realizada correctamente.")
+                print(reserva.comprobante)
+
+                return True
+            else:
+                print("⛔ Esa habitación ya está reservada en ese horario.")
+                return False
+
 
     def esta_disponible(self, hab_num, fecha, hora):
         for r in self.reservas:
@@ -29,7 +34,12 @@ class Hotel:
 
     def guardar_reservas(self):
         with open("reservas.json", "w") as f:
-            json.dump([r.__dict__ for r in self.reservas], f, indent=4)
+            json.dump(
+                [{k: v for k, v in r.__dict__.items() if k != "comprobante"} for r in self.reservas],
+                f,
+                indent=4
+            )
+
 
     def cargar_reservas(self):
         try:
