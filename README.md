@@ -50,6 +50,15 @@ En el contexto actual de la industria hotelera, la gestión eficiente de reserva
 
 ---
 
+## 🔄 Flujo interno del sistema
+
+- `main.py` actúa como interfaz de usuario, solicitando datos y enviándolos al objeto `Hotel`.
+- `Hotel` se encarga de verificar la disponibilidad y crear la reserva si es válida.
+- `Reserva` valida si el horario ingresado es aceptado.
+- Las reservas se almacenan y recuperan desde `reservas.json` automáticamente.
+
+---
+
 ## ✅ Requisitos
 
 - Python ≥ 3.8  
@@ -105,6 +114,23 @@ Si la habitación está libre, verás:
 Introduce el **nombre del cliente** y se listarán todas sus reservas.  
 Si no existen, verás:  
 **❌ No se encontraron reservas con ese nombre.**
+
+### 🕒 Horarios Disponibles y Precios
+
+| Turno   | Horario      | Precio |
+|---------|--------------|--------|
+| Mañana  | 08:00–12:00  | $15    |
+| Tarde   | 14:00–18:00  | $25    |
+| Noche   | 20:00–24:00  | $50    |
+
+---
+
+## 🔐 Validaciones implementadas
+
+- ✅ El número de habitación debe estar entre 1 y 5.
+- ✅ La hora debe coincidir con los rangos permitidos.
+- ✅ No se permite reservar dos veces una habitación el mismo día y turno.
+- ✅ Se rechazan formatos de fecha no válidos (`YYYY-MM-DD`).
 
 ---
 
