@@ -4,30 +4,31 @@ from reserva import Reserva
 class Hotel:
     def __init__(self, nombre):
         self.nombre = nombre
-        self.habitaciones = [i for i in range(1, 6)] 
+        self.habitaciones = [i for i in range(1, 6)]  # habitaciones 1 a 5
         self.reservas = []
         self.cargar_reservas()
 
     def crear_reserva(self, reserva):
-            if not reserva.es_valida():
-                print("⛔ Horario inválido.")
-                return False
-            if self.esta_disponible(reserva.habitacion_num, reserva.fecha, reserva.hora_inicio):
-                reserva.generar_comprobante()
-                self.reservas.append(reserva)
-                self.guardar_reservas()
+        if not reserva.es_valida():
+            print("⛔ Horario inválido.")
+            return False
+        if self.esta_disponible(reserva.habitacion_num, reserva.fecha, reserva.hora_inicio):
+            reserva.generar_comprobante()
+            self.reservas.append(reserva)
+            self.guardar_reservas()
 
-                print("✅ Reserva realizada correctamente.")
-                print(reserva.comprobante)
-                 
-                with open("reservas.txt", "a", encoding="utf-8") as f:
-            f.write(reserva.comprobante + "\n" + "-" * 30 + "\n")
+            # Guardar comprobante en archivo txt por cliente
+            nombre_archivo = f"comprobante_{reserva.cliente.lower().replace(' ', '_')}.txt"
+            with open(nombre_archivo, "a", encoding="utf-8") as f:
+                f.write(reserva.comprobante + "\n" + "-" * 30 + "\n")
 
-                return True
-            else:
-                print("⛔ Esa habitación ya está reservada en ese horario.")
-                return False
+            print("✅ Reserva realizada correctamente.")
+            print(reserva.comprobante)
 
+            return True
+        else:
+            print("⛔ Esa habitación ya está reservada en ese horario.")
+            return False
 
     def esta_disponible(self, hab_num, fecha, hora):
         for r in self.reservas:
@@ -42,7 +43,6 @@ class Hotel:
                 f,
                 indent=4
             )
-
 
     def cargar_reservas(self):
         try:
