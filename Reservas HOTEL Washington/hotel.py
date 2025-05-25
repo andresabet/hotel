@@ -19,6 +19,9 @@ class Hotel:
 
                 print("✅ Reserva realizada correctamente.")
                 print(reserva.comprobante)
+                 
+                with open("reservas.txt", "a", encoding="utf-8") as f:
+            f.write(reserva.comprobante + "\n" + "-" * 30 + "\n")
 
                 return True
             else:
