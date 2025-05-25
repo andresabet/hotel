@@ -18,8 +18,8 @@ class Hotel:
             self.reservas.append(reserva)
             self.guardar_reservas()
 
-            
-            nombre_archivo = f"comprobante_{reserva.cliente.lower().replace(' ', '_')}.txt"
+            timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+            nombre_archivo = f"comprobante_{reserva.cliente.lower().replace(' ', '_')}_{reserva.fecha}_{timestamp}.txt"
             with open(nombre_archivo, "w", encoding="utf-8") as f:
                 f.write(str(reserva.comprobante))
 
