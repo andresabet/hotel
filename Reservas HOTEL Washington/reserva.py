@@ -1,4 +1,6 @@
 from datetime import datetime, time
+from comprobante import Comprobante
+
 
 HORARIOS_VALIDOS = {
     "mañana": (time(8, 0), time(12, 0)),
@@ -7,11 +9,13 @@ HORARIOS_VALIDOS = {
 }
 
 class Reserva:
-    def __init__(self, habitacion_num, cliente, fecha, hora_inicio):
+    def __init__(self, habitacion_num, cliente, fecha, hora_inicio, monto=50):
         self.habitacion_num = habitacion_num
         self.cliente = cliente
-        self.fecha = fecha  # string YYYY-MM-DD
-        self.hora_inicio = hora_inicio  # string HH:MM
+        self.fecha = fecha
+        self.hora_inicio = hora_inicio
+        self.monto = monto
+        self.comprobante = None ##funcion nueva del comprobante(extra)
 
     def es_valida(self):
         try:
@@ -19,3 +23,6 @@ class Reserva:
             return any(inicio <= hora <= fin for inicio, fin in HORARIOS_VALIDOS.values())
         except ValueError:
             return False
+
+    def generar_comprobante(self):
+        self.comprobante = Comprobante(self.cliente, self.habitacion_num, self.fecha, self.hora_inicio, self.monto)

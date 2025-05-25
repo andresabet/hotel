@@ -1,14 +1,23 @@
 [
     {
-        "habitacion_num": 1,
+        "habitacion_num": 5,
         "cliente": "Washington",
-        "fecha": "2025-05-05",
-        "hora_inicio": "20:00"
+        "fecha": "2026-06-03",
+        "hora_inicio": "20:00",
+        "monto": 50.0
+    },
+    {
+        "habitacion_num": 3,
+        "cliente": "Washington",
+        "fecha": "2027-05-03",
+        "hora_inicio": "14:00",
+        "monto": 25.0
     },
     {
         "habitacion_num": 1,
-        "cliente": "Tatiana",
-        "fecha": "2025-05-05",
-        "hora_inicio": "08:00"
+        "cliente": "Ricardo",
+        "fecha": "2025-07-07",
+        "hora_inicio": "14:00",
+        "monto": 25.0
     }
 ]
