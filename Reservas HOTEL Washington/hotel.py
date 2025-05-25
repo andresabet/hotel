@@ -1,5 +1,6 @@
 import json
 from reserva import Reserva
+from datetime import datetime
 
 class Hotel:
     def __init__(self, nombre):
