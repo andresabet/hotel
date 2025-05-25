@@ -12,6 +12,7 @@ class Hotel:
         if not reserva.es_valida():
             print("⛔ Horario inválido.")
             return False
+
         if self.esta_disponible(reserva.habitacion_num, reserva.fecha, reserva.hora_inicio):
             reserva.generar_comprobante()
             self.reservas.append(reserva)
@@ -19,12 +20,11 @@ class Hotel:
 
             # Guardar comprobante en archivo txt por cliente
             nombre_archivo = f"comprobante_{reserva.cliente.lower().replace(' ', '_')}.txt"
-          with open("reservas.txt", "a", encoding="utf-8") as f:
-              f.write(str(reserva.comprobante) + "\n" + "-" * 30 + "\n")
+            with open("reservas.txt", "a", encoding="utf-8") as f:
+                f.write(str(reserva.comprobante) + "\n" + "-" * 30 + "\n")
 
             print("✅ Reserva realizada correctamente.")
             print(reserva.comprobante)
-
             return True
         else:
             print("⛔ Esa habitación ya está reservada en ese horario.")
