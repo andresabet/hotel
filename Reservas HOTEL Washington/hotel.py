@@ -18,10 +18,10 @@ class Hotel:
             self.reservas.append(reserva)
             self.guardar_reservas()
 
-            # Guardar comprobante en archivo txt por cliente
+            
             nombre_archivo = f"comprobante_{reserva.cliente.lower().replace(' ', '_')}.txt"
-            with open("reservas.txt", "a", encoding="utf-8") as f:
-                f.write(str(reserva.comprobante) + "\n" + "-" * 30 + "\n")
+            with open(nombre_archivo, "w", encoding="utf-8") as f:
+                f.write(str(reserva.comprobante))
 
             print("✅ Reserva realizada correctamente.")
             print(reserva.comprobante)
